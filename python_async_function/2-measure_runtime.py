@@ -29,4 +29,4 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
 def measure_time(n: int, max_delay: int) -> float:
     """Returns average time of wait_n"""
     total_time = asyncio.run(wait_n(n, max_delay))
-    return (total_time) / n
+    return sum(total_time) / n
