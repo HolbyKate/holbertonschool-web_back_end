@@ -8,11 +8,11 @@ using asyncio.gather
 
 import asyncio
 import random
-from typing import Generator, List
+from typing import AsyncGenerator, List
 import time
 
 
-async def async_generator() -> Generator[float, None, None]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     The coroutine will loop 10 times, each time asynchronously wait 1 second
     """
@@ -33,11 +33,10 @@ async def async_comprehension() -> List[float]:
 
 async def measure_runtime() -> float:
     """
-    Coroutine that will execute async_comprehension four times in parallel
-    using asyncio.gathermeasure_runtime should measure the total runtime
-    and return it
+    Execute async_comprehension four times in parallel using asyncio.gather
     """
-    start_time = time.perf_counter()
+    start = time.time()
     await asyncio.gather(*(async_comprehension() for i in range(4)))
-    end_time = time.perf_counter()
-    return end_time - start_time
+    end = time.time()
+    total_runtime = end - start
+    return total_runtime
