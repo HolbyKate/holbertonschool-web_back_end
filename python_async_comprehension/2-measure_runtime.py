@@ -8,12 +8,15 @@ using asyncio.gather
 
 import asyncio
 import time
+from typing import Generator
+
+
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
-    """Return the time it takes to run 4 asynchronous list comprehensions"""
-    start = time.perf_counter()
-    await asyncio.gather(*(async_comprehension() for i in range(4)))
-    end = time.perf_counter()
-    return (end - start)
+    """Execute async_comprehension four times in parallel"""
+    start = time.time()
+    await asyncio.gather(*(async_comprehension() for _ in range(4)))
+    end = time.time()
+    return end - start
