@@ -9,7 +9,7 @@ using asyncio.gather
 import asyncio
 import random
 from typing import Generator, List
-from time import perf_counter
+import time
 
 
 async def async_generator() -> Generator[float, None, None]:
@@ -37,7 +37,7 @@ async def measure_runtime() -> float:
     using asyncio.gathermeasure_runtime should measure the total runtime
     and return it
     """
-    start = perf_counter()
+    start_time = time.perf_counter()
     await asyncio.gather(*(async_comprehension() for i in range(4)))
-    end = perf_counter()
-    return end - start
+    end_time = time.perf_counter()
+    return end_time - start_time
