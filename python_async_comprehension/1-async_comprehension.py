@@ -6,10 +6,10 @@ called async_comprehension that takes no arguments
 
 import asyncio
 import random
-from typing import Generator, List
+from typing import AsyncGenerator, List
 
 
-async def async_generator() -> Generator[float, None, None]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     The coroutine will loop 10 times, each time asynchronously wait 1 second
     """
