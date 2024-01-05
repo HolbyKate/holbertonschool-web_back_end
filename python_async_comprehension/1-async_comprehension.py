@@ -9,13 +9,7 @@ import random
 from typing import AsyncGenerator, List
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
-    """
-    The coroutine will loop 10 times, each time asynchronously wait 1 second
-    """
-    for i in range(10):
-        await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+async_generator = __import__('0-async_generator').async_generator
 
 
 async def async_comprehension() -> List[float]:
