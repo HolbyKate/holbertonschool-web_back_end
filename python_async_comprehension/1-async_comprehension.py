@@ -23,6 +23,6 @@ async def async_comprehension() -> List[float]:
     The coroutine will collect 10 random numbers using
     an async comprehensing over async_generator
     """
-    for i in range(10):
+    for _ in range(10):
         await asyncio.sleep(1)
         return [i async for i in async_generator()]

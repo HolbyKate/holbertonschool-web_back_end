@@ -16,7 +16,7 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
     The coroutine will loop 10 times, each time asynchronously wait 1 second
     """
-    for i in range(10):
+    for _ in range(10):
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
 
@@ -28,15 +28,14 @@ async def async_comprehension() -> List[float]:
     """
     for i in range(10):
         await asyncio.sleep(1)
-        return [i async for i in async_generator()]
+        return [_ async for _ in async_generator()]
 
 
 async def measure_runtime() -> float:
     """
     Execute async_comprehension four times in parallel using asyncio.gather
     """
-    start = time.time()
-    await asyncio.gather(*(async_comprehension() for i in range(4)))
-    end = time.time()
-    total_runtime = end - start
-    return total_runtime
+    start_time = time.time()
+    await asyncio.gather(*(async_comprehension() for _ in range(4)))
+    end_time = time.time()
+    return (end_time - start_time)
