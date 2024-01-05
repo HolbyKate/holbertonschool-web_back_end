@@ -26,3 +26,4 @@ async def async_comprehension() -> List[float]:
     for _ in range(10):
         await asyncio.sleep(1)
         return [i async for i in async_generator()]
+    return []

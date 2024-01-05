@@ -29,6 +29,7 @@ async def async_comprehension() -> List[float]:
     for i in range(10):
         await asyncio.sleep(1)
         return [_ async for _ in async_generator()]
+    return []
 
 
 async def measure_runtime() -> float:
