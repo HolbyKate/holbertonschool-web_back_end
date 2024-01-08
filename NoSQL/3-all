@@ -1,0 +1,2 @@
+// Write a script that list in the collection school
+db.school.find()
