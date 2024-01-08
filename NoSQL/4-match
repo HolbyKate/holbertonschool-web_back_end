@@ -1,0 +1,4 @@
+// Write script that lists all documents with 1 name in the collection school
+db.school.find({
+    name="Holberton school"
+})
