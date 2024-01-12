@@ -40,7 +40,6 @@ class Server:
         range = index_range(page, page_size)
         return self.dataset()[range[0]:range[1]]
 
-
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         method that takes the same arguments (and defaults) as get_page
