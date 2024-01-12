@@ -10,14 +10,6 @@ import math
 from typing import List
 
 
-def index_range(page: int, page_size: int):
-    """
-    function named index_range that takes two integer
-    arguments page and page_size
-    """
-    return ((page - 1) * page_size, page * page_size)
-
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -43,8 +35,18 @@ class Server:
         method named get_page that takes two integer arguments page
         with default value 1 and page_size with default value 10.
         """
-        assert isinstance(page, int) and isinstance(page_size, int)
-        assert page > 0 and page_size > 0
-        self.dataset()
+        assert type(page, int) and type(page_size, int)
+        assert type(page) > 0 and type(page_size) > 0
         start, end = index_range(page, page_size)
         return self.__dataset[start:end]
+    
+        if (start, end) >= len(self.__dataset):
+            return []
+    
+
+def index_range(page: int, page_size: int):
+    """
+    function named index_range that takes two integer
+    arguments page and page_size
+    """
+    return ((page - 1) * page_size, page * page_size)
