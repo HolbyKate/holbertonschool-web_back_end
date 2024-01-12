@@ -8,7 +8,7 @@ import builtins
 import csv
 import math
 import random
-from typing import List
+from typing import List, Dict
 
 
 class Server:
