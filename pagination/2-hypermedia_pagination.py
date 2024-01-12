@@ -11,7 +11,6 @@ import random
 from typing import List
 
 
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -49,9 +48,10 @@ def index_range(page: int, page_size: int):
     """
     return ((page - 1) * page_size, page * page_size)
 
+
 def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
     """
-    method that takes the same arguments (and defaults) as get_page 
+    method that takes the same arguments (and defaults) as get_page
     and returns a dictionary containing the following key-value pairs
     """
     data = self.get_page(page, page_size)
