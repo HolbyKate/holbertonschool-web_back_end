@@ -9,7 +9,8 @@ from typing import List
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
+    """
+    Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -18,7 +19,8 @@ class Server:
         self.__indexed_dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """
+        Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -29,7 +31,8 @@ class Server:
         return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
-        """Dataset indexed by sorting position, starting at 0
+        """
+        Dataset indexed by sorting position, starting at 0
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
@@ -49,6 +52,6 @@ class Server:
             "index": index,
             "next_index": index + page_size,
             "page_size": page_size,
-            "data": [self.indexed_dataset().get(i) for i in range(index, index + page_size)]
+            "data": [self.indexed_dataset().get(i) 
+                     for i in range(index, index + page_size)]
         }
-            
