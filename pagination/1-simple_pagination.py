@@ -39,6 +39,7 @@ class Server:
         range = index_range(page, page_size)
         return self.dataset()[range[0]:range[1]]
 
+
 def index_range(page: int, page_size: int):
     """
     function named index_range that takes two integer
