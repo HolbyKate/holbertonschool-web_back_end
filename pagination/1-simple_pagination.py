@@ -38,8 +38,11 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            pass
-
+        """
+        method named get_page that takes two integer arguments page
+        with default value 1 and page_size with default value 10
+        """
+        pass
 
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     """
@@ -47,4 +50,7 @@ def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     with default value 1 and page_size with default value 10.
     """
     assert type(page) is int and type(page_size) is int
-    assert page > 0 and page_size >0
+    assert page > 0 and page_size > 0
+    self.dataset()
+    start, end = index_range(page, page_size)
+    return(index_range)
