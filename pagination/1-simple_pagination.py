@@ -44,6 +44,7 @@ class Server:
         """
         pass
 
+
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     """
     method named get_page that takes two integer arguments page
@@ -53,4 +54,4 @@ def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     assert page > 0 and page_size > 0
     self.dataset()
     start, end = index_range(page, page_size)
-    return(index_range)
+    return(start, end)
