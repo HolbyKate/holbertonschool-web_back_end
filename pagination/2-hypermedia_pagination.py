@@ -41,25 +41,25 @@ class Server:
         return self.dataset()[range[0]:range[1]]
 
 
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        method that takes the same arguments (and defaults) as get_page
+        and returns a dictionary containing the following key-value pairs
+        """
+        data = self.get_page(page, page_size)
+        return {
+            "page_size": len(data),
+            "page": page,
+            "data": dataset,
+            "next_page": page + 1 if page + 1 < total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": total_pages
+        }
+
+
 def index_range(page: int, page_size: int):
     """
     function named index_range that takes two integer
     arguments page and page_size
     """
     return ((page - 1) * page_size, page * page_size)
-
-
-def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-    """
-    method that takes the same arguments (and defaults) as get_page
-    and returns a dictionary containing the following key-value pairs
-    """
-    data = self.get_page(page, page_size)
-    return {
-        "page_size": len(data),
-        "page": page,
-        "data": dataset,
-        "next_page": page + 1 if page + 1 < total_pages else None,
-        "prev_page": page - 1 if page > 1 else None,
-        "total_pages": total_pages
-    }
