@@ -5,6 +5,6 @@ export default function getBudgetObject(income, gdp, capita) {
       gdp,
       capita,
     };
-  
-    const keys = Object.keys(budget)
+
+    return budget
 }
