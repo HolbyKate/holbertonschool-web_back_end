@@ -1,9 +1,9 @@
-/* eslint-disable */
+/* eslint-disable import/extensions */
 export default function getBudgetObject(income, gdp, capita) {
     const budget = {
-      income: any,
-      gdp: any,
-      capita: any,
+      income,
+      gdp,
+      capita,
     };
   
     return budget;
