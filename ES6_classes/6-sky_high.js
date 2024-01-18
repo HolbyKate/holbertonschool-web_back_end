@@ -4,7 +4,7 @@ import Building from '5-building.js';
 
 export default class SkyHighBuilding extends Building {
     constructor(sqft, floors) {
-        thiq._sqft = sqft;
+        this._sqft = sqft;
         this._floors = floors;
     }
     get floors() {
