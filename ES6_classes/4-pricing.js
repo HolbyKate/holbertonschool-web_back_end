@@ -8,24 +8,26 @@ export default class Pricing {
     }
 
     get amount() {
-        return this._amount;
+        this._amount = amount;
     }
 
     set amount(amount) {
-        if (typeof amount !== 'number') {
-            throw TypeError('Amount must be a number');
-        }
         this._amount = amount;
     }
 
     get currency() {
-        return this._currency;
+      this._currency = currency;
     }
 
     set currency(currency) {
-        if (!(currency instanceof ClassCurrency)) {
-            throw TypeError('Currency must be a class Currency');
-        }
         this._currency = currency;
+    }
+
+    displayFullPrice() {
+        return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+    }
+    
+    static convertPrice(amount, conversionRate) {
+        return amount * conversionRate;
     }
 }
