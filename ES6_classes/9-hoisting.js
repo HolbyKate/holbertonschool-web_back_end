@@ -29,8 +29,16 @@ export class StudentHolberton {
     return this._firstName;
   }
 
+  set firstName(newFirstName) {
+    this._firstName = newFirstName;
+  }
+  
   get lastName() {
     return this._lastName;
+  }
+
+  set lastName(newLastName) {
+    this._lastName = newLastName;
   }
 
   get fullName() {
@@ -38,7 +46,7 @@ export class StudentHolberton {
   }
 
   get holbertonClass() {
-    return this.holbertonClass;
+    return this._holbertonClass;
   }
 
   set holbertonClass(newHolbertonClass) {
