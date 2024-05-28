@@ -8,8 +8,10 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """Add a key and see if it's none or not"""
+    """create class"""
+    
     def put(self, key, item):
+        """Add a key and see if it's none or not"""
         if key is not None and item is not None:
             self.cache_data[key] = item
             
