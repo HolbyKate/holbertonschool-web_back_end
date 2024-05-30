@@ -9,6 +9,7 @@ from base_caching import BaseCaching
 class FIFOCache(BaseCaching):
     def __init__(self):
         super().__init__()
+        self.cache_order = []
 
     def put(self, key, item):
         """Assign the item value for key cache"""
@@ -16,14 +17,17 @@ class FIFOCache(BaseCaching):
             return
 
         if key in self.cache_data:
-            self.cache_data[key] = item
-            self.cache_keys.remove(key)
+            self.cache_order.remove(key)
         elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            discard_key = self.cache_keys.pop(0)
+            discard_key = self.cache_order.pop(0)
             print(f"DISCARD: {discard_key}")
-            self.cache_data[key] = item
+            del self.cache_data[discard_key]
+
+        self.cache_data[key] = item
+        self.cache_order.append(key)
 
     def get(self, key):
+        """Return the value in self.cache_data linked to key"""
         if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
