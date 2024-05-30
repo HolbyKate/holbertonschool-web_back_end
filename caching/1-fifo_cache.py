@@ -7,6 +7,7 @@ from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
+    """Create class"""
     def __init__(self):
         super().__init__()
         self.cache_order = []
