@@ -10,7 +10,8 @@ class LIFOCache(BaseCaching):
     """Create class"""
     def __init__(self):
         super().__init__()
-        self.cache_keys = []
+        self.cache_data = []
+        self.cache_order = []
 
     def put(self, key, item):
         """Assign the item value for key cache"""
@@ -29,4 +30,3 @@ class LIFOCache(BaseCaching):
         if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
-        
