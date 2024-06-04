@@ -20,7 +20,7 @@ class LIFOCache(BaseCaching):
         if key in self.cache_data:
             self.cache_keys.remove(key)
         elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            discard_key = self.cache_keys.pop(0)
+            discard_key = self.cache_keys.pop()
             print(f"DISCARD: {discard_key}")
             del self.cache_data[discard_key]
             
