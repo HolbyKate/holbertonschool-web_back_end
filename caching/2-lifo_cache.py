@@ -24,6 +24,9 @@ class LIFOCache(BaseCaching):
             discard_key = self.cache_order.pop(0)
             print(f"DISCARD: {discard_key}")
             del self.cache_data[discard_key]
+            
+        self.cache_order.append(key)
+        self.cache_data[key] = item
 
     def get(self, key):
         """Return the value giving with key in the cache"""
