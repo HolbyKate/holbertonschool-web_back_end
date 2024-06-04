@@ -10,7 +10,7 @@ class LIFOCache(BaseCaching):
     """Create class"""
     def __init__(self):
         super().__init__()
-        self.cache_data = []
+        self.cache_data = {}
         self.cache_order = []
 
     def put(self, key, item):
@@ -19,7 +19,7 @@ class LIFOCache(BaseCaching):
             return
 
         if key in self.cache_data:
-            self.cache_keys.remove(key)
+            self.cache_order.remove(key)
         elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             discard_key = self.cache_order.pop(0)
             print(f"DISCARD: {discard_key}")
