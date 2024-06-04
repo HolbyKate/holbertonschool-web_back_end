@@ -23,7 +23,7 @@ class LIFOCache(BaseCaching):
             discard_key = self.cache_keys.pop()
             print(f"DISCARD: {discard_key}")
             del self.cache_data[discard_key]
-            
+
         self.cache_keys.append(key)
         self.cache_data[key] = item
 
