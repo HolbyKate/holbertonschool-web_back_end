@@ -11,7 +11,7 @@ class LRUCache(BaseCaching):
     def __init__(self):
         super().__init__()
         self.cache_keys = []
-        
+
     def put(self, key, item):
         """Assign the item value for key cache"""
         if key is None or item is None:
@@ -32,4 +32,3 @@ class LRUCache(BaseCaching):
         if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
-        
