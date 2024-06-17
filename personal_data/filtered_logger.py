@@ -4,6 +4,7 @@ import re
 """Function that returns the log message obfuscated"""
 
 def filter_datum(fields, redaction, message, separator):
+    """Obfuscate field message"""
     for field in fields:
         pattern = r'|'.join(field)(separator)
         message = re.sub(pattern, (redaction), (message))
