@@ -6,6 +6,10 @@ import re
 def filter_datum(fields, redaction, message, separator):
     """Obfuscate field message"""
     for field in fields:
-        pattern = r'|'.join(field)(separator)
-        message = re.sub(pattern, (redaction), (message))
-    return pattern
+        pattern = rf'({field}=)([^{separator}]*)'
+        message = re.sub(pattern, rf'\1{redaction}', message)
+    return message
+
+
+    if __name__ == "__main__":
+        main()
