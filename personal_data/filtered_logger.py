@@ -40,4 +40,7 @@ def get_logger() -> logging.Logger:
     logger = logging.getLogger()
     logger.name = "user_data"
     logger.setLevel(logging.INFO)
+
+    stream_handler = logging.StreamHandler()
+    formatter = RedactingFormatter()
     return logger
