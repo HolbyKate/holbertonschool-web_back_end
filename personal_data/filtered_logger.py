@@ -37,8 +37,7 @@ class RedactingFormatter(logging.Formatter):
 def get_logger() -> logging.Logger:
     """Implement a get_logger function that takes no arguments
     and returns a logging.Logger object"""
-    logger = logging.getLogger
+    logger = logging.getLogger()
     logger.name = "user_data"
-    logger.setLevel = logging.INFO
+    logger.setLevel(logging.INFO)
     return logger
-
