@@ -28,5 +28,3 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         """filter values in incoming log records"""
-        record message()
-        NotImplementedError
