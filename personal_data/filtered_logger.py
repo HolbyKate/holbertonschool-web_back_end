@@ -40,3 +40,5 @@ def get_logger() -> logging.Logger:
     logger = logging.getLogger
     logger.name = "user_data"
     logger.setLevel = logging.INFO
+    return logger
+
