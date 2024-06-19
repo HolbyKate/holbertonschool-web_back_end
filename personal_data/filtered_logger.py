@@ -39,7 +39,7 @@ class RedactingFormatter(logging.Formatter):
 def get_logger() -> logging.Logger:
     """Implement a get_logger function that takes no arguments
     and returns a logging.Logger object"""
-    logger = logging.getLogger()
+    logger = logging.getLogger("user_data")
     logger.name = "user_data"
     logger.setLevel(logging.INFO)
     logger.propagate = False
@@ -57,4 +57,5 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
     host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
     dbname = os.getenv("PERSONAL_DATA_DB_NAME", "default_db")
-    return mysql.connector.connect(username, password, host, dbname)
+    return mysql.connector.connect(
+        user=username, password=password, host=host, database=dbname)
