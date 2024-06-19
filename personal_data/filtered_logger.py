@@ -45,8 +45,9 @@ def get_logger() -> logging.Logger:
     logger.propagate = False
 
     stream_handler = logging.StreamHandler()
-    formatter = RedactingFormatter()
+    formatter = RedactingFormatter(PII_FIELDS)
     stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
     return logger
 
 
@@ -54,6 +55,6 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     """function that connect to secure option database"""
     username = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
     password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
-    host = os.getenv("PERSONAL_DATA_DB_HOST", "localmhost")
+    host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
     dbname = os.getenv("PERSONAL_DATA_DB_NAME")
     return mysql.connector.connect(username, password, host, dbname)
