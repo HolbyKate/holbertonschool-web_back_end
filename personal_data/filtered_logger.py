@@ -40,7 +40,6 @@ def get_logger() -> logging.Logger:
     """Implement a get_logger function that takes no arguments
     and returns a logging.Logger object"""
     logger = logging.getLogger("user_data")
-    logger.name = "user_data"
     logger.setLevel(logging.INFO)
     logger.propagate = False
 
@@ -59,3 +58,23 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     dbname = os.getenv("PERSONAL_DATA_DB_NAME", "default_db")
     return mysql.connector.connect(
         user=username, password=password, host=host, database=dbname)
+
+
+def main():
+    logger = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+    for row in cursor:
+        log_message = (
+            f"name={row[0]}; email={row[1]}; phone={row[2]}; ssn={row[3]}; "
+            f"password={row[4]}; ip={row[5]}; last_login={row[6]}; "
+            f"user_agent={row[7]};"
+        )
+        logger.info(log_message)
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
