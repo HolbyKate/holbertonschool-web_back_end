@@ -5,6 +5,10 @@ from flask import request
 from typing import List, TypeVar
 
 
+"""Define generic User type"""
+User = TypeVar('User')
+
+
 class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """_summary_
@@ -29,7 +33,12 @@ class Auth:
         return None
 
     def current_user(self, request=None) -> User:
-        """
-        Return current user
+        """_summary_
+
+        Args:
+            request (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            User: _description_
         """
         return None
