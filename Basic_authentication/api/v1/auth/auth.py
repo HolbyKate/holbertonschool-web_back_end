@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-""" Module of auth
+"""
+Auth class for API authentication management
 """
 from flask import request
 from typing import List, TypeVar
-
-
-"""Define generic User type"""
-User = TypeVar('User')
 
 
 class Auth:
@@ -32,7 +29,7 @@ class Auth:
         """
         return None
 
-    def current_user(self, request=None) -> User:
+    def current_user(self, request=None) -> TypeVar('User'):
         """_summary_
 
         Args:
