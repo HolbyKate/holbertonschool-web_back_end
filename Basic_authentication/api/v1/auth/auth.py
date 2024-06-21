@@ -20,7 +20,7 @@ class Auth:
         """
         if path is None:
             return True
-        if excluded_paths is None:
+        if excluded_paths is None or len(excluded_paths) == 0:
             return True
         """assume excluded_paths contains string path always ending by a /"""
         if not path.endswith('/'):
