@@ -17,7 +17,7 @@ class Auth:
         Returns:
             bool: _description_
         """
-        return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """
