@@ -21,4 +21,4 @@ class BasicAuth(Auth):
             return None
         if not authorization_header.startswhith("Basic "):
             return None
-        return authorization_header
+        return authorization_header[len("Basic "):]
