@@ -32,4 +32,4 @@ class SessionAuth(Auth):
         if request is None:
             return None
         session_name = os.get("SESSION_NAME", "my_session_id")
-        return request(session_name)
+        return request.cookie.get(session_name)
