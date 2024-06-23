@@ -31,5 +31,5 @@ class SessionAuth(Auth):
         """Method that returns a cookie value from a request"""
         if request is None:
             return None
-        session_name = os.get("SESSION_NAME", "my_session_id")
+        session_name = os.getenv("SESSION_NAME", "my_session_id")
         return request.cookie.get(session_name)
