@@ -53,3 +53,8 @@ class Auth:
             User: _description_
         """
         return None
+
+
+class SessionAuth:
+    """Session Auth class"""
+    pass
