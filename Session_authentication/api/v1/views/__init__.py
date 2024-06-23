@@ -8,9 +8,6 @@ app_views = Blueprint("app_views", __name__, url_prefix="/api/v1")
 from Basic_authentication.api.v1 import app
 from api.v1.views.index import *
 from api.v1.views.users import *
+from api.v1.views.session_auth import *
 
 User.load_from_file()
-
-from api.v1.views.session_auth import session_auth
-
-app.register_blueprint(session_auth)
