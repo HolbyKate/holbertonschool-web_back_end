@@ -3,8 +3,8 @@
 Auth class for API authentication management
 """
 from api.v1.auth.auth import Auth
+from models.user import User
 import uuid
-import os
 
 
 class SessionAuth(Auth):
