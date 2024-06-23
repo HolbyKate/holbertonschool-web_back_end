@@ -73,10 +73,10 @@ def before_request() -> None:
         return
 
     if auth.authorization_header(request) is None:
-        abort(401)
+        return jsonify({"error": "Unauthorized"}), 401
 
     if auth.current_user(request) is None:
-        abort(403)
+        return jsonify({"error": "Forbidden"}), 403
 
 
 if __name__ == "__main__":
