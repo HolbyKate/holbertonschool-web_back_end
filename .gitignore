@@ -3,6 +3,9 @@ node_modules
 # Environnements virtuels
 venv/
 env/
+lib/
+bin/
+.venv/
 
 # Dossiers de configuration IDE
 .idea/
