@@ -2,9 +2,8 @@
 """
 Auth class for API authentication management
 """
-from flask import request
-from typing import List, TypeVar
 from api.v1.auth.auth import Auth
+import uuid
 
 
 class SessionAuth(Auth):
