@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+
 from user import Base, User
 
 from sqlalchemy.orm.exc import NoResultFound
@@ -17,7 +18,7 @@ class DB:
     def __init__(self) -> None:
         """Initialize a new DB instance
         """
-        self._engine = create_engine("sqlite:///a.db", echo=True)
+        self._engine = create_engine("sqlite:///a.db", echo=False)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
         self.__session = None
@@ -51,3 +52,12 @@ class DB:
             return user
         except InvalidRequestError:
             raise
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """
+        Method to locate the user to update, then will update the user’s
+        attributes as passed in the method’s arguments then commit changes
+        to the database.
+        """
+    
+        raise ValueError
