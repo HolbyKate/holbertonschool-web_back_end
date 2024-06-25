@@ -51,8 +51,3 @@ class DB:
             return user
         except InvalidRequestError:
             raise
-
-def close(self):
-    """Adding a close session to avoid hanging transaction"""
-    if self.__session:
-        self.__session.close()
