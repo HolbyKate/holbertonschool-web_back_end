@@ -6,6 +6,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from user import Base, User
 
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
+
 
 class DB:
     """DB class
@@ -35,3 +38,21 @@ class DB:
         self._session.commit()
 
         return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """
+        Method takes in arbitrary keyword arguments and returns the first
+        row found in the users table
+        """
+        try:
+            user = self._session.query(User).filter_by(**kwargs).first()
+            if user is None:
+                raise NoResultFound
+            return user
+        except InvalidRequestError:
+            raise
+
+def close(self):
+    """Adding a close session to avoid hanging transaction"""
+    if self.__session:
+        self.__session.close()
