@@ -52,12 +52,3 @@ class DB:
             return user
         except InvalidRequestError:
             raise
-
-    def update_user(self, user_id: int, **kwargs) -> None:
-        """
-        Method to locate the user to update, then will update the user’s
-        attributes as passed in the method’s arguments then commit changes
-        to the database.
-        """
-    
-        raise ValueError
