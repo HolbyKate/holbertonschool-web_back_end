@@ -57,7 +57,7 @@ class Auth:
                 password.encode('utf-8'), user.hashed_password)
         except NoResultFound:
             return False
-        
+
     def create_session(self, email: str) -> str:
         """Create session ID for user if exist"""
         try:
