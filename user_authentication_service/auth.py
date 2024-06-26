@@ -21,8 +21,8 @@ class Auth:
         Method that takes in a password string arguments and returns bytes
         """
         salt = bcrypt.gensalt()
-        _hash_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-        return _hash_password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+        return hashed_password
 
     def register_user(self, email: str, password: str) -> User:
         """Registrer user"""
@@ -34,4 +34,4 @@ class Auth:
         except NoResultFound:
             """if no email found, we do the registration"""
             hashed_password = self._hash_password(password)
-            return self._db.add_user(email, hashed_password=hashed_password)
+            return self._db.add_user(email=email, hashed_password=hashed_password)
