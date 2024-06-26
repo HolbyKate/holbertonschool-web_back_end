@@ -4,8 +4,7 @@
 from flask import Flask, jsonify, request
 
 from auth import Auth
-from sqlalchemy.orm.exc import NoResultFound
-import bcrypt
+
 
 app = Flask(__name__)
 
