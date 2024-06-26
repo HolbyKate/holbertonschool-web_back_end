@@ -29,7 +29,7 @@ class Auth:
             """Try to find the user by email"""
             self._db.find_user_by(email=email)
             """if email already existe"""
-            raise ValueError(f"user {email} already exists")
+            raise ValueError(f"User {email} already exists")
         except NoResultFound:
             """if no email found, we do the registration"""
         hashed_password = self._hash_password(password)
