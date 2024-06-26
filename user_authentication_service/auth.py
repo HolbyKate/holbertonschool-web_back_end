@@ -34,4 +34,5 @@ class Auth:
         except NoResultFound:
             """if no email found, we do the registration"""
             hashed_password = self._hash_password(password)
-            return self._db.add_user(email=email, hashed_password=hashed_password)
+            return self._db.add_user(
+                email=email, hashed_password=hashed_password)
