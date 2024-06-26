@@ -35,9 +35,9 @@ class Auth:
             """if no email found, we do the registration"""
             hashed_password = self._hash_password(password)
             """Add user to the database and return the User object"""
-            user = self._db.add_user(
+            new_user = self._db.add_user(
                 email=email, hashed_password=hashed_password)
-            return user
+            return new_user
 
     def valid_login(self, email: str, password: str) -> bool:
         """
