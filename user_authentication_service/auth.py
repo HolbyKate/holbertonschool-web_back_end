@@ -44,7 +44,7 @@ class Auth:
             """Add user to the database and return the User object"""
             user = self._db.add_user(
                 email=email, hashed_password=hashed_password)
-            return user
+            return User
 
     def valid_login(self, email: str, password: str) -> bool:
         """
