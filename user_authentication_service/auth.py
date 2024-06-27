@@ -61,9 +61,9 @@ class Auth:
     def create_session(self, email: str) -> str:
         """Create session ID for user if exist"""
         try:
-            User = self._db.find_user_by(email=email)
+            user = self._db.find_user_by(email=email)
             session_id = _generate_uuid()
-            self._db.update_user(User.id, session_id=session_id)
+            self._db.update_user(user.id, session_id=session_id)
             return session_id
         except NoResultFound:
             return None
@@ -71,17 +71,17 @@ class Auth:
     def get_user_from_session_id(self, session_id: str) -> User:
         """find user by session"""
         try:
-            User = self._db.find_user_by(session_id=session_id)
+            user = self._db.find_user_by(session_id=session_id)
         except NoResultFound:
             return None
         else:
-            return User
+            return user
 
     def destroy_session(self, user_id: int) -> None:
         """Shut down session"""
         try:
-            user_id = self._db.find_user_by(id=user_id)
+            user = self._db.find_user_by(id=user_id)
         except NoResultFound:
             return None
         else:
-            self._db.update_user(user_id, session_id=None)
+            self._db.update_user(user.id, session_id=None)
