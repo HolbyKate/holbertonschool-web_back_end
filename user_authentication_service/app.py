@@ -41,21 +41,10 @@ def login():
         response = make_response(jsonify(
                 {"email": email, "message": "logged in"}))
         response.set_cookie("session_id", session_id)
-        return response
+        return response, 200
     else:
         abort(401)
-
-@app.route('/sessions', methods=['DELETE'])
-def logout():
-    """Create logoutfunction"""
-    session_id = request.cookies.get('session_id')
-    
-    if session_id is None:
-        abort(403)
-    
-    """If session Id is in the DB"""
-    if session_id in sessions:
-        
+      
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
