@@ -42,7 +42,7 @@ class Auth:
             """if no email found, we do the registration"""
             hashed_password = _hash_password(password)
             """Add user to the database and return the User object"""
-            user = self._db.add_user(
+            User = self._db.add_user(
                 email=email, hashed_password=hashed_password)
             return User
 
@@ -61,9 +61,9 @@ class Auth:
     def create_session(self, email: str) -> str:
         """Create session ID for user if exist"""
         try:
-            user = self._db.find_user_by_email(email)
+            User = self._db.find_user_by_email(email)
             session_id = -_generate_uuid()
-            self._db.update_user(user.id, session_id=session_id)
+            self._db.update_user(User.id, session_id=session_id)
             return session_id
         except NoResultFound:
             return None
