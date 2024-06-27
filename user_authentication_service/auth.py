@@ -61,7 +61,7 @@ class Auth:
     def create_session(self, email: str) -> str:
         """Create session ID for user if exist"""
         try:
-            User = self._db.find_user_by_email(email)
+            User = self._db.find_user_by_email(email=email)
             session_id = -_generate_uuid()
             self._db.update_user(User.id, session_id=session_id)
             return session_id
