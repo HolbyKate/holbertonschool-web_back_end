@@ -73,6 +73,8 @@ def profile():
             return jsonify({"email": user.email}), 200
         else:
             abort(403)
+    else:
+        abort(403)
 
 
 if __name__ == "__main__":
