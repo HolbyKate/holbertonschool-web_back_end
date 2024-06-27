@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Set up Flask"""
 
-from flask import Flask, jsonify, request, abort, make_response
+from flask import Flask, jsonify, request, abort, make_response, sessions
 
 from auth import Auth
 
@@ -32,7 +32,7 @@ def register_user():
 
 @app.route('/session', methods=['POST'])
 def login():
-    """Create login"""
+    """Create login function"""
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -40,11 +40,22 @@ def login():
         session_id = AUTH.create_session(email)
         response = make_response(jsonify(
                 {"email": email, "message": "logged in"}))
-        response.set_cookie(session_id=session_id)
-        return response
+        response.set_cookie("session_id", session_id)
+        return response, 200
     else:
         abort(401)
 
+@app.route('/sessions', methods=['DELETE'])
+def logout():
+    """Create logoutfunction"""
+    session_id = request.cookies.get('session_id')
+    
+    if session_id is None:
+        abort(403)
+    
+    """If session Id is in the DB"""
+    if session_id in sessions:
+        
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
