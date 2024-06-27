@@ -83,8 +83,9 @@ def get_reset_password_token():
     email = request.form.get('email')
     if not AUTH.user_exists(email):
         abort(403)
-
-    return jsonify({"email": email, "reset_token": token}), 200
+    """Generate token reset"""
+    reset_token = AUTH.generate_password_reset_token(email)
+    return jsonify({"email": email, "reset_token": reset_token}), 200
 
 
 if __name__ == "__main__":
