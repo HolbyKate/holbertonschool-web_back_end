@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Set up Flask"""
 
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, make_response
 
 from auth import Auth
 
@@ -39,8 +39,12 @@ def login():
     if not email or not password:
         abort(400)
     try:
-        AUTH.valid_login(email, password)
-        return jsonify({"email": "<user email>", "message": "logged in"})
+        if AUTH.valid_login(email, password):
+            session_id = AUTH.create_session(email)
+            response = make_response(jsonify(
+                {"email": "<user email>", "message": "logged in"}))
+            response.set_cookie("session_id", session_id)
+            return response
     except ValueError:
         abort(401)
 
