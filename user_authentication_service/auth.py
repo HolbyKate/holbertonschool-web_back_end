@@ -84,7 +84,7 @@ class Auth:
         except NoResultFound:
             return None
         else:
-            self._db.update_user(user.id, session_id=None)
+            self._db.update_user(user_id, session_id=None)
 
     def get_reset_password_token(self, email: str) -> str:
         """Find user corresponding to email"""
