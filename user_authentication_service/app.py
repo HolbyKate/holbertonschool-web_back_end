@@ -76,6 +76,9 @@ def profile():
 def get_reset_password_token():
     """Reset password"""
     email = request.form.get('email')
+    if not email:
+        return jsonify({"message": "Missing email"}), 400
+
     if not AUTH.user_exist(email):
         abort(403)
 
@@ -89,6 +92,11 @@ def update_password():
     email = request.form.get('email')
     reset_token = request.form.get('reset_token')
     new_password = request.form.get('new_password')
+
+    if not email or not reset_token or not new_password:
+        return jsonify(
+            {"message": "Missing email, reset_token, or new_password"})
+
     if not AUTH.update_password(reset_token, new_password):
         abort(403)
     else:
