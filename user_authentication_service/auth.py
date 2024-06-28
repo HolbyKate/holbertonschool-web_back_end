@@ -94,7 +94,7 @@ class Auth:
             raise ValueError
         token = _generate_uuid
         self._db.update_user(user.id, reset_token=token)
-        return token
+        return str(token)
 
     def update_password(self, reset_token: str, password: str) -> str:
         """update the password"""
