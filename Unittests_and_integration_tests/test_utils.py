@@ -31,8 +31,8 @@ class TestGetJson(unittest.TestCase):
     """Class that inherit from unittest.TestCase"""
 
     @parameterized.expand([
-        ("http://example.com", test_payload={"payload": True}),
-        ("http://holberton.io", test_payload={"payload": False})
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
     ])
     def test_get_json(self, test_url, test_payload, mock_get):
         """method to test that utils.get_json returns the expected result"""
