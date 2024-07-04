@@ -49,13 +49,25 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_public_repos_url.return_value = "https://api.github.com/orgs/google/repos"
 
             client = GithubOrgClient('google')
-            repos = client.public_repos
+            repos = client.public_repos()
 
             expected_repos = ["repo1", "repo2", "repo3"]
             self.assertEqual(repos, expected_repos)
 
             mock_public_repos_url.assert_called_once()
             mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
+
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False),
+        ({"license": None}, "my_license", False),
+        ({}, "my_license", False)
+    ])
+    def test_has_license(self, repo, licence_key, expected):
+        """Test parametize"""
+        client = GithubOrgClient('google')
+        result = client.has_license(repo, license_key)
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':
