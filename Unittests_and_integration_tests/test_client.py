@@ -37,7 +37,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
-
+        """Test that public_repos returns the correct list of repos."""
         mock_payload = [
             {"name": "repo1"},
             {"name": "repo2"},
