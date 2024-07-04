@@ -48,15 +48,15 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch.object(GithubOrgClient, '_public_repos_url', new_callable=PropertyMock) as mock_public_repos_url:
             mock_public_repos_url.return_value = "https://api.github.com/orgs/google/repos"
 
-        client = GithubOrgClient('google')
-        repos = client.public_repos()
+            client = GithubOrgClient('google')
+            repos = client.public_repos()
 
-        expected_repos = ["repo1", "repo2", "repo3"]
-        self.assertEqual(repos, expected_repos)
+            expected_repos = ["repo1", "repo2", "repo3"]
+            self.assertEqual(repos, expected_repos)
 
-        """Test that the mocked get_json was called once with the correct argument"""
-        mock_public_repos_url.assert_called_once()
-        mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
+            """Test that the mocked get_json was called once with the correct argument"""
+            mock_public_repos_url.assert_called_once()
+            mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
 
 
 if __name__ == '__main__':
