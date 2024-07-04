@@ -49,7 +49,7 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_public_repos_url.return_value = "https://api.github.com/orgs/google/repos"
 
             client = GithubOrgClient('google')
-            repos = client.public_repos()
+            repos = client.public_repos
 
             expected_repos = ["repo1", "repo2", "repo3"]
             self.assertEqual(repos, expected_repos)
