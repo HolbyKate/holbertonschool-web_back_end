@@ -4,7 +4,7 @@
 import unittest
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
-from client import GithubOrgClient
+from client import GithubOrgClient, get_json
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -35,6 +35,16 @@ class TestGithubOrgClient(unittest.TestCase):
 
         self.assertEqual(result, "https://api.github.com/orgs/google/repos")
 
-
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json):
+        
+        mock_payload = [
+            {"name": "repo1"},
+            {"name": "repo2"},
+            {"name": "repo3"}
+        ]
+        with patch.object(GithubOrgClient, '_public_repos_url', new_callable=PropertyMock) as mock_public_repos_url:
+            mock_public_repos_url.return_value = "https://api.github.com/orgs/testorg/repos"
+            
 if __name__ == '__main__':
     unittest.main()
