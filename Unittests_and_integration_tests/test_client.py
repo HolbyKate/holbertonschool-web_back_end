@@ -37,7 +37,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
-        
+
         mock_payload = [
             {"name": "repo1"},
             {"name": "repo2"},
@@ -45,6 +45,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ]
         with patch.object(GithubOrgClient, '_public_repos_url', new_callable=PropertyMock) as mock_public_repos_url:
             mock_public_repos_url.return_value = "https://api.github.com/orgs/testorg/repos"
-            
+
+
 if __name__ == '__main__':
     unittest.main()
