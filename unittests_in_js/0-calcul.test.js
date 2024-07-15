@@ -2,7 +2,7 @@
 // Create test case
 
 const assert = require("assert");
-const calculateNumber = require("./0-calcul.js");
+const calculateNumber = require("./0-calcul.js").default;
 
 describe('calculateNumber', () => {
   it('should return 4 for (1, 3)', () => {

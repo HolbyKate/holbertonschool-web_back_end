@@ -6,4 +6,4 @@ function calculateNumber(a, b) {
 }
 
 
-module.exports = calculateNumber;
+export default calculateNumber;
