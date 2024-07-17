@@ -5,21 +5,21 @@ const { expect } = require('chai');
 const Utils = require('./utils');
 const sendPaymentRequestToApi = require('./4-payment');
 
-describe('sendPaymentRequestToApi', function () {
+describe('sendPaymentRequestToApi', function() {
     let calculateNumberStub;
     let consoleLogSpy;
 
-    beforeEach(function () {
+    beforeEach(function() {
         calculateNumberStub = sinon.stub(Utils, 'calculateNumber').returns(10);
         consoleLogSpy = sinon.spy(console, 'log');
     });
 
-    afterEach(function () {
+    afterEach(function() {
         calculateNumberStub.restore();
         consoleLogSpy.restore();
     });
 
-    it('should call Utils.calculateNumber with SUM, 100, 20 and log the correct total', function () {
+    it('should call Utils.calculateNumber with SUM, 100, 20 and log the correct total', function() {
         const spy = sinon.spy(Utils, 'calculateNumber');
 
         sendPaymentRequestToApi(100, 20);
