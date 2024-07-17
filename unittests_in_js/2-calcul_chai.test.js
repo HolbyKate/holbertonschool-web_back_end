@@ -1,6 +1,6 @@
 // Create test case
 
-const expect = require('chai');
+const { expect } = require('chai');
 const calculateNumber = require('./2-calcul_chai.js');
 
 describe('calculateNumber', () => {
