@@ -18,5 +18,3 @@ function calculateNumber(type, a, b) {
             throw new Error('Invalid operation type');
     }
 }
-
-module.exports = calculateNumber;
