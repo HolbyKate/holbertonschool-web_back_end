@@ -1,4 +1,4 @@
-//Create a function sendPaymentRequestToApi to 4-payment.js
+//Create a function sendPaymentRequestToApi to -payment.js
 
 const Utils = require('./utils');
 
