@@ -1,16 +1,22 @@
 {
-  "name": "task_0",
+  "name": "json",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"\"",
   "main": "0-calcul.js",
-  "type": "module",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.6.0"
+  },
   "scripts": {
     "test": "mocha"
   },
-  "devDependencies": {
-    "chai": "^5.1.1",
-    "eslint": "^8.56.0",
-    "mocha": "^10.6.0"
+  "repository": {
+    "type": "git",
+    "url": "holbertonschool-web_back_end"
   },
-  "dependencies": {}
+  "author": "Cathy",
+  "license": "ISC"
 }
