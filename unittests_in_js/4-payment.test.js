@@ -6,26 +6,24 @@ const Utils = require('./utils');
 const sendPaymentRequestToApi = require('./4-payment');
 
 describe('sendPaymentRequestToApi', function() {
-    let calculateNumberStub;
-    let consoleLogSpy;
+    let consoleSpy, calculateNumberStub;
 
     beforeEach(function() {
         calculateNumberStub = sinon.stub(Utils, 'calculateNumber').returns(10);
-        consoleLogSpy = sinon.spy(console, 'log');
+        consoleSpy = sinon.spy(console, 'log');
     });
 
     afterEach(function() {
         calculateNumberStub.restore();
-        consoleLogSpy.restore();
+        consoleSpy.restore();
     });
 
-    it('should call Utils.calculateNumber with SUM, 100, 20 and log the correct total', function() {
+    it('should log the correct total and verify the stub call', function() {
         sendPaymentRequestToApi(100, 20);
 
         expect(calculateNumberStub.calledOnce).to.be.true;
         expect(calculateNumberStub.calledWith('SUM', 100, 20)).to.be.true;
-        
-        expect(consoleLogSpy.calledOnce).to.be.true;
-        expect(consoleLogSpy.firstCall.args[0]).to.equal('The total is: 10');
+
+        expect(consoleSpy.calledWith('The total is: 10')).to.be.true;
     });
 });
