@@ -10,7 +10,7 @@ describe('calculateNumber', () => {
         });
 
         it('should return 5 when inputs are 1 and 3.7', function () {
-            assert.strictEqual(calculateNumber('SUML', 1, 3.7), 5);
+            assert.strictEqual(calculateNumber('SUM', 1, 3.7), 5);
         });
 
         it('should return 5 when inputs are 1.2 and 3.7', function () {
@@ -59,8 +59,8 @@ describe('calculateNumber', () => {
             assert.strictEqual(calculateNumber('SUBTRACT', 1.5, 3.7), -2);
         });
 
-        it('should return -1 when inputs are -0.4 and 0.4', function () {
-            assert.strictEqual(calculateNumber('SUBTRACT', -0.4, 0.4), -1);
+        it('should return 0 when inputs are -0.4 and 0.4', function () {
+            assert.strictEqual(calculateNumber('SUBTRACT', -0.4, 0.4), 0);
         });
 
         it('should return -1 when inputs are -0.6 and -0.4', function () {
@@ -81,24 +81,24 @@ describe('calculateNumber', () => {
     });
 
     describe('DIVIDE', () => {
-        it('should return 0.25 when inputs are 1 and 3', function () {
-            assert.strictEqual(calculateNumber('DIVIDE', 1, 3), 0.25);
+        it('should return 0.33 when inputs are 1 and 3', function () {
+            assert.strictEqual(parseFloat(calculateNumber('DIVIDE', 1, 3).toFixed(2)), 0.33);
         });
 
         it('should return 0.25 when inputs are 1 and 3.7', function () {
-            assert.strictEqual(calculateNumber('DIVIDE', 1, 3.7), 0.25);
+            assert.strictEqual(parseFloat(calculateNumber('DIVIDE', 1, 3.7).toFixed(2)), 0.25);
         });
 
         it('should return 0.25 when inputs are 1.2 and 3.7', function () {
-            assert.strictEqual(calculateNumber('DIVIDE', 1.2, 3.7), 0.25);
+            assert.strictEqual(parseFloat(calculateNumber('DIVIDE', 1.2, 3.7).toFixed(2)), 0.25);
         });
 
         it('should return 0.5 when inputs are 1.5 and 3.7', function () {
-            assert.strictEqual(calculateNumber('DIVIDE', 1.5, 3.7), 0.5);
+            assert.strictEqual(parseFloat(calculateNumber('DIVIDE', 1.5, 3.7).toFixed(1)), 0.5);
         });
 
-        it('should return -1 when inputs are -0.4 and 0.4', function () {
-            assert.strictEqual(calculateNumber('DIVIDE', -0.4, 0.4), -1);
+        it('should return Error when inputs are -0.4 and 0.4', function () {
+            assert.strictEqual(calculateNumber('DIVIDE', -0.4, 0.4), 'Error');
         });
 
         it('should return 2 when inputs are -0.6 and -0.4', function () {
