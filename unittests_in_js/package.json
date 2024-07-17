@@ -8,13 +8,8 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "babel-jest": "^29.7.0",
     "chai": "^5.1.1",
     "eslint": "^8.56.0",
-    "jest": "^29.7.0",
     "mocha": "^10.6.0"
   },
   "dependencies": {}
