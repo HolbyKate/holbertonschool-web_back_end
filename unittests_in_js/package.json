@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "\"\"",
   "main": "0-calcul.js",
+  "type": "module",
   "dependencies": {
     "express": "^4.19.2",
     "package.json": "^2.0.1",
