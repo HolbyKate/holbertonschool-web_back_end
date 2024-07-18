@@ -1,27 +1,17 @@
 {
-  "name": "json",
-  "version": "1.0.0",
-  "description": "\"\"",
-  "main": "0-calcul.js",
-  "type": "module",
-  "dependencies": {
-    "express": "^4.19.2",
-    "package.json": "^2.0.1",
-    "request": "^2.88.2",
-    "sinon": "^18.0.0"
-  },
-  "devDependencies": {
-    "chai": "^5.1.1",
-    "jest": "^29.7.0",
-    "mocha": "^10.6.0"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "holbertonschool-web_back_end"
-  },
-  "author": "Cathy",
-  "license": "ISC"
+    "name": "unittest_in_js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "0-calcul.js",
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha"
+    },
+    "keywords": [],
+    "author": "Cathy",
+    "license": "ISC",
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "mocha": "^8.4.0",
+        "sinon": "^9.2.3"
+    }
 }
