@@ -16,7 +16,8 @@ function setNewSchool(schoolName, value) {
 }
 
 function displaySchoolValue(schoolName) {
-    console.log(value)
+    const finalValue = client.set(schoolName, redis.print);
+    console.log(finalValue)
 }
 
 
