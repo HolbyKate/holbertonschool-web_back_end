@@ -40,7 +40,7 @@ position = ((width - img_hippocampe.width) // 2, (height - img_hippocampe.height
 img_qr.paste(img_hippocampe, position, mask)
 
 # Save final image
-img_qr.save('qrcode_hippocampe2.png')
+img_qr.save('qrcode_linkedin.png')
 
 # Display image
 img_qr.show()

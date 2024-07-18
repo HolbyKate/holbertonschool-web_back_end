@@ -1,5 +1,5 @@
-Trying to create a QRCODE with hippocampe
-2 install importantes: 
+I'm trying to create a QRCODE with an image integrated in the center of the QR code to personalize it.
+2 important installations: 
 pip install qrcode[pil]
 pip install Pillow
-et img_qr.show() pour afficher l'image
+and img_qr.show() to display the image
