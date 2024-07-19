@@ -3,22 +3,18 @@
 const request = require('request');
 const chai = require('chai');
 
-describe('integration test', () => {
-  it('should return status code 200', (done) => {
-    chai.request('http://localhost:7865')
-      .get('/')
-      .end((err, res) => {
-        res.should.have.status(200);
+describe('basic integration testing', () => {
+  describe('GET /', () => {
+    it('endpoint GET /', (done) => {
+      request('http://localhost:7865', (error, response, body) => {
+        if (error) {
+          done(error);
+          return;
+        }
+        chai.expect(response.statusCode).to.equal(200);
+        chai.expect(body).to.equal('Welcome to the payment system');
         done();
       });
-  });
-
-  it('should return Welcome to the payment system', (done) => {
-    chai.request('http://localhost:7865')
-      .get('/')
-      .end((err, res) => {
-        res.text.should.equal('Welcome to the payment system');
-        done();
-      });
+    });
   });
 });
