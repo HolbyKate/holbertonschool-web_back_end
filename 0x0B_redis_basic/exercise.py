@@ -34,3 +34,15 @@ class Cache:
             return None
         if fn is None:
             return None
+
+    def get_str(self, key: str) -> Union[str, None]:
+        """
+        Retrieve a string value from Redis
+        """
+        return self.get(key, fn=lambda d: d.decode("utf-8"))
+
+    def get_int(self, key: str) -> Union[int, None]:
+        """
+        Retrieve an integer value from Redis
+        """
+        return self.get(key, fn=int)
