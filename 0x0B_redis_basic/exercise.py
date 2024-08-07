@@ -11,15 +11,16 @@ def call_history(method: Callable) -> Callable:
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         key = method.__qualname__
-        self._redis.incr(key)
+        input_key = f"{key}:inputs"
+        output_key = f"{key}:outputs"
     
         """Store input arguments"""
         input_str = str(args)
-        self._redis.rpush(key, input_str)
+        self._redis.rpush(input_key, input_str)
         
         """Execute the method and store its output"""
         output = method(self, *args, **kwargs)
-        self._redis.rpush(key, str(output))
+        self._redis.rpush(output_key, str(output))
         
         return output
     return wrapper
