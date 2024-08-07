@@ -13,17 +13,18 @@ def call_history(method: Callable) -> Callable:
         key = method.__qualname__
         input_key = f"{key}:inputs"
         output_key = f"{key}:outputs"
-    
+
         """Store input arguments"""
         input_str = str(args)
         self._redis.rpush(input_key, input_str)
-        
+
         """Execute the method and store its output"""
         output = method(self, *args, **kwargs)
         self._redis.rpush(output_key, str(output))
-        
+
         return output
     return wrapper
+
 
 def count_calls(method: Callable) -> Callable:
     """
@@ -84,7 +85,9 @@ class Cache:
         return self.get(key, fn=int)
 
     def replay(method: Callable):
-        """Display the history of call"""
+        """
+        Display the history of call
+        """
         key = method.__qualname__
         input_key = f"{key}:inputs"
         output_key = f"{key}:outputs"
