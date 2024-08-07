@@ -84,6 +84,7 @@ class Cache:
         """
         return self.get(key, fn=int)
 
+    @staticmethod
     def replay(method: Callable):
         """
         Display the history of call
