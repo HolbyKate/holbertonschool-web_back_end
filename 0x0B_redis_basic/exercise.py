@@ -103,3 +103,13 @@ def replay(method: Callable):
     for inp, outp in zip(inputs, outputs):
         print(f"{method_name}(*{inp.decode(
             'utf-8')}) -> {outp.decode('utf-8')}")
+
+
+# Testing the implementation
+if __name__ == "__main__":
+    cache = Cache()
+    cache.store("foo")
+    cache.store("bar")
+    cache.store(42)
+    
+    replay(cache.store)
