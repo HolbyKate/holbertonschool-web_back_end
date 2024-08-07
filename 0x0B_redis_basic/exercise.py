@@ -14,11 +14,11 @@ def call_history(method: Callable) -> Callable:
         input_key = f"{key}:inputs"
         output_key = f"{key}:outputs"
 
-        """Store input arguments"""
+        #Store input arguments
         input_str = str(args)
         self._redis.rpush(input_key, input_str)
 
-        """Execute the method and store its output"""
+        #Execute the method and store its output
         output = method(self, *args, **kwargs)
         self._redis.rpush(output_key, str(output))
 
@@ -47,7 +47,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    """decorate with count_calls"""
+
     @count_calls
     @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
