@@ -92,3 +92,12 @@ class Cache:
         key = method.__qualname__
         input_key = f"{key}:inputs"
         output_key = f"{key}:outputs"
+
+        # Fetch all inputs and outputs from Redis
+        inputs = self._redis.lrange(input_key, 0, -1)
+        outputs = self._redis.lrange(output_key, 0, -1)
+
+        # Print the history of calls
+        print(f"{key} was called {len(inputs)} times:")
+        for inp, out in zip(inputs, outputs):
+            print(f"{key}(*{inp.decode('utf-8')}) -> {out.decode('utf-8')}")
