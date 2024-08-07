@@ -3,4 +3,4 @@ SELECT name AS band_name,
 IF(split IS NULL, YEAR(CURDATE()) - formed, split - formed) AS lifespan
 FROM metal_bands
 WHERE style = 'Glam rock'
-ORDER BY lidfespan DESC;
+ORDER BY lifespan DESC;
