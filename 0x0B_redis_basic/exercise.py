@@ -88,6 +88,7 @@ class Cache:
         """
         Display the history of call
         """
+        self = method.__self__
         key = method.__qualname__
         input_key = f"{key}:inputs"
         output_key = f"{key}:outputs"
