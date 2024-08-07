@@ -82,3 +82,9 @@ class Cache:
         Retrieve an integer value from Redis
         """
         return self.get(key, fn=int)
+
+    def replay(method: Callable):
+        """Display the history of call"""
+        key = method.__qualname__
+        input_key = f"{key}:inputs"
+        output_key = f"{key}:outputs"
