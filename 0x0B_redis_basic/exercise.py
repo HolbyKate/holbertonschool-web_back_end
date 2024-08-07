@@ -42,7 +42,8 @@ class Cache:
 
     def __init__(self):
         """
-        Initilize Cache class a Redis client instance and flushes the database
+        Initialize Cache class with a Redis client instance and
+        flush the database.
         """
         self._redis = redis.Redis()
         self._redis.flushdb()
@@ -61,8 +62,8 @@ class Cache:
             fn: Optional[Callable] = None) -> Union[str,
                                                     bytes, int, float, None]:
         """
-        Retrieve data from Redis using the given key if fn is provided,
-        use it to convert the data
+        Retrieve data from Redis using the given key. If fn is provided,
+        use it to convert the data.
         """
         value = self._redis.get(key)
         if value is None:
@@ -86,7 +87,7 @@ class Cache:
     @staticmethod
     def replay(method: Callable):
         """
-        Display the history of call
+        Display the history of calls of a particular method
         """
         self = method.__self__
         key = method.__qualname__
