@@ -1,5 +1,5 @@
 -- creates a stored procedure AddBonus that adds a new correction for a student
-DELEMITER //
+DELIMITER //
 --  Changes the delimiter from ; to // to allow the creation of the stored
 -- procedure without prematurely ending it.
 CREATE PROCEDURE AddBonus(
